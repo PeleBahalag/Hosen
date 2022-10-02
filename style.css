@@ -41,10 +41,6 @@
         transition: all .2s ease;
     }
     
-    .div-btn:hover {
-        /* width: 22vw; */
-    }
-    
     .div-btn:hover h1 {
         font-size: 1.2vw;
     }

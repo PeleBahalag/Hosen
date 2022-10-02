@@ -1,5 +1,31 @@
 let video;
-const correctVid = "Con3";
+//            Intro
+//          /      \
+//        Con3 ->  Con2
+//        /       /    \
+//       Con4   Con5    Con6
+// 
+let jsonPath = {
+    Intro: {
+        'btn1': 'Con3',
+        'btn2': 'Con2',
+        'btn1Text': 'אסתער על המחבלים',
+        'btn2Text': 'אנהל משא ומתן לשחרור האזרחים מידהם'
+    },
+    Con3: {
+        'btn1': 'Con4',
+        'btn2': 'Con2',
+        'btn1Text': 'עוצר אותו ומקפיא מצב',
+        'btn2Text': 'מסתער איתו על המחבלים'
+
+    },
+    Con2: {
+        'btn1': 'Con5',
+        'btn2': 'Con6',
+        'btn1Text': 'להשאר עם המחבל הכבול ולטפל בפצועים',
+        'btn2Text': 'רדיפה אחרי המחבל שברח'
+    }
+}
 
 window.addEventListener("load", () => {
     video = document.getElementById('vid');
@@ -26,72 +52,51 @@ const startVid = () => {
 // Add components at the end of the video (listener)
 const vidEnded = (event) => {
     video.webkitExitFullscreen();
-    if (source.src.includes("Intro")) {
-        document.getElementById("btn-container").style.display = "flex";
-        document.getElementById("restart").style.display = "block";
-        window.removeEventListener("click", togglePause);
-        document.getElementById("restart").addEventListener("click", startVid);
+    let btn1 = document.getElementById("btn1div");
+    let btn2 = document.getElementById("btn2div");
+    let videoName = getVideoName();
+    document.getElementById('txt1').innerText = jsonPath[videoName].btn1Text;
+    document.getElementById('txt2').innerText = jsonPath[videoName].btn2Text;
 
-        let btn1 = document.getElementById("btn1div");
-        let btn2 = document.getElementById("btn2div");
-        let btn3 = document.getElementById("btn3div");
-        btn1.addEventListener("click", sit1);
-        btn2.addEventListener("click", sit2);
-        btn3.addEventListener("click", sit3);
-    } else if (source.src.includes(`BW`)) {
-        source.src = './assets/videos/Intro.mp4';
-        video.load();
-        video.currentTime = 36.5;
-        startVid();
-    } else if (source.src.includes(`${correctVid}-2`)) {
-        document.getElementById("restart").style.display = "block";
-    } else if (source.src.includes(`-2`)) {
-        source.src = source.src.replace("-2.mp4", "-2BW.mp4");
-        video.load();
-        startVid();
-    } else {
-        document.getElementById("next").style.display = "block";
-        document.getElementById("restart").style.display = "block";
-        window.removeEventListener("click", togglePause);
-        video.style.cssText = "filter: blur(30px);"
-        document.getElementById("next").addEventListener("click", secCon);
-        document.getElementById("restart").addEventListener("click", startVid);
-    }
+    btn1.addEventListener("click", () => {
+        nextSituation(jsonPath[videoName].btn1);
+    });
+    btn2.addEventListener("click", () => {
+        nextSituation(jsonPath[videoName].btn2);
+    });
+    document.getElementById("btn-container").style.display = "flex";
+    document.getElementById("restart").style.display = "block";
+    window.removeEventListener("click", togglePause);
+    document.getElementById("restart").addEventListener("click", startVid);
 
+    // video.style.cssText = "filter: blur(30px);"
 }
+
+const getVideoName = () => {
+    let sourcePath = source.getAttribute('src');
+    sourcePath = sourcePath.replaceAll('/', '');
+    sourcePath = sourcePath.replaceAll('assets', '');
+    sourcePath = sourcePath.replaceAll('videos', '');
+    sourcePath = sourcePath.replaceAll('.', '');
+    sourcePath = sourcePath.replaceAll('mp4', '');
+
+    return sourcePath;
+}
+
 
 // ----------------
 // Situations
-const sit1 = () => {
-    source.src = './assets/videos/Con1.mp4';
+const nextSituation = (Nextvideo) => {
+    source.src = `./assets/videos/${Nextvideo}.mp4`;
     video.load();
     startVid();
 }
 
-const sit2 = () => {
-    source.src = './assets/videos/Con2.mp4';
-    video.load();
-    startVid();
-}
-
-const sit3 = () => {
-    source.src = './assets/videos/Con3.mp4';
-    video.load();
-    startVid();
-}
-
-// -------------
-const secCon = () => {
-    source.src = source.src.replace(".mp4", "-2.mp4");
-    console.log(source.src)
-
-    video.load();
-    startVid();
-}
 
 // ---------------------
 // Pause / Unpause
 const togglePause = () => {
+    console.log(getVideoName());
     let pause = document.getElementById("pause");
     if (video.paused) {
         video.play();
