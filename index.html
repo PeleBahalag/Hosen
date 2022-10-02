@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>חוסן</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="./script.js"></script>
+</head>
+
+<body>
+
+    <div class="player" id="player">
+        <video width="250" id="vid" autoplay preload="auto" controls>
+
+            <source id="source" src="./assets/videos/Intro.mp4"
+                    type="video/mp4">
+            Sorry, your browser doesn't support embedded videos.
+        </video>
+
+    </div>
+    <img src="./assets/pictures/pause.png" id="pause" />
+
+    <img src="./assets/pictures/restart.png" id="restart" />
+    <img src="./assets/pictures/next.png" id="next" />
+    <div id="btn-container">
+        <div class="div-btn" id="btn1div">
+            <h1>חודלת</h1>
+        </div>
+        <div class="div-btn" id="btn2div">
+            <h1>מתעלמת</h1>
+        </div>
+        <div class="div-btn" id="btn3div">
+            <h1>מתערבת</h1>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

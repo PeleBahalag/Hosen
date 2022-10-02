@@ -1,0 +1,206 @@
+    @font-face {
+        font-family: Heebo;
+        src: url(./assets/fonts/Heebo/Heebo-Regular.ttf);
+    }
+    
+    html,
+    body {
+        user-select: none;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        background-color: black;
+        user-select: none;
+    }
+    
+    video {
+        position: absolute;
+        margin: auto;
+        height: 100vh;
+        width: 100vw;
+        left: 0;
+        top: 0;
+        transition: all .4s ease;
+    }
+    
+    #btn {
+        z-index: 999;
+        position: absolute;
+    }
+    
+    #pause {
+        z-index: 9999;
+        width: 20vw;
+        opacity: 0;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        left: 50%;
+        transition: all .2s ease;
+    }
+    
+    .btnSquish {
+        opacity: 0.8;
+        width: 30vw;
+        height: 20vw;
+        font-size: 1.5vw;
+        cursor: pointer;
+        transition: all .3s ease;
+        color: white;
+        margin: -.8vw;
+    }
+    
+    .div-btn:hover {
+        filter: drop-shadow(10px 10px 10px);
+    }
+    
+    .div-btn:hover h1 {
+        font-size: 2.3vw;
+    }
+    
+    .div-btn {
+        background: radial-gradient(circle, rgba(78, 80, 18, 1) 0%, rgba(218, 210, 113, 1) 100%);
+        filter: drop-shadow(20px 20px 20px);
+        text-align: center;
+        opacity: 1;
+        width: 18vw;
+        height: 6vw;
+        font-size: 1.5vw;
+        cursor: pointer;
+        transition: all .3s ease;
+        color: black;
+        margin: 2vw;
+        font-family: Heebo;
+        border-radius: 10px;
+    }
+    
+    h1 {
+        position: relative;
+        margin: 0;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        font-size: 2vw;
+        transition: all .3s ease;
+    }
+    
+    #btn-container {
+        z-index: 99999;
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 60%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        left: 66.5%;
+        flex-wrap: nowrap;
+        flex-direction: row;
+    }
+    
+    #restart {
+        display: none;
+        z-index: 999999;
+        width: 4vw;
+        position: absolute;
+        top: 85%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        left: 90%;
+        cursor: pointer;
+        transform-origin: bottom-left;
+        transition: all .4s ease;
+    }
+    
+    #restart:hover {
+        transform: rotateZ(-80deg);
+        left: 88%;
+        top: 82%;
+    }
+    
+    #next {
+        display: none;
+        z-index: 99999;
+        width: 25vw;
+        position: absolute;
+        top: 35%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        left: 50%;
+        cursor: pointer;
+        transform-origin: bottom-left;
+        transition: all .4s ease;
+    }
+    
+    #next:hover {
+        left: 60%;
+    }
+    /* for phones and tablets */
+    
+    @media only screen and (orientation: landscape) {}
+    
+    @media only screen and (orientation: portrait) {
+        html,
+        body {
+            background-color: white;
+            overflow: hidden;
+        }
+        video {
+            width: 100vw;
+            height: 56.25vw;
+            left: 0;
+            top: 0;
+            margin: 0;
+        }
+        #pause {
+            top: 20vh;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            left: 50%;
+        }
+        #btn-container {
+            top: 70vw;
+            -ms-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+            left: 49%;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .btnSquish {
+            width: 50vw;
+            height: 20vh;
+            margin: -.8vw;
+        }
+        .div-btn {
+            width: 50vw;
+            height: 20vh;
+            margin: -4vw;
+        }
+        h1 {
+            font-size: 5vw;
+        }
+        #next {
+            top: 70vw;
+        }
+        #restart {
+            width: 4vw;
+            top: 65vw;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            left: 90%;
+        }
+        #restart:hover {
+            left: 88%;
+            top: 63vw;
+        }
+        .div-btn:hover .btnSquish {
+            width: 60vw;
+            height: 25vh;
+            margin-left: -5.5vw;
+        }
+        .div-btn:hover h1 {
+            top: -63%;
+        }
+    }
